@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{HW1}
+\author{Jamil Santos\\\\APPM 5600-001}
+\date{September 3, 2025}
+\usepackage[a4paper, total={7in, 11in}]{geometry}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+
+    \item rewrite to avoid cancellation\\
+    i. $\frac{1-cos(x)}{sin(x)}$, $|x| \ll 1$ \\
+    $\frac{1-cos(x)}{sin(x)}=(\frac{1-cos(x)}{sin(x)})(\frac{1+cos(x)}{1+cos(x)})=\frac{1-cos^2(x)}{sin(x)(1+cos(x))}=\frac{sin^2(x)}{sin(x)(1+cos(x))}=\frac{sin(x)}{1+cos(x)}$
+    \\
+    ii.$(x+1)^{\frac{1}{3}}-1$,$|x| \ll 1$\\
+    $(x+1)^{\frac{1}{3}}-1=((x+1)^{\frac{1}{3}}-1)(\frac{(x+1)^{3}}{(x+1)^{3}})=\frac{(x+1)-(x+1)^{3}}{(x+1)^{3}}=\frac{1-(x+1)^{2}}{(x+1)^{2}}=\frac{-x^{2}-2x}{(x+1)^{2}}=\frac{-x(x+2)}{(x+1)^{2}}$\\
+    
+    \item consider the polynomial $p(x)=(x-2)^{9}=x^{9}-18x^{8}+144x^{7}-672x^{6}+2016x^{5}-4032x^{4}+5376x^{3}-4608x^{2}+2304x-512$\\
+    i. plot $p(x)$ for $x=[1.920:0.001:2.080]$ via the coefficients\\
+    ii. plot $p(x)=(x-2)^{9}$\\
+    iii. plot $p(x)=(x-2)^{9}$ via nested multiplication\\
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{hw1problem2.png}
+        \label{fig:my_label}
+    \end{figure}\\
+    iv. (ii) uses the least amount of multiplication/division and addition/subtraction operations to evaluate the function on the points and there are fewer occasions of roundoff error. (iii) uses fewer operations than (i), but still more than (ii)\\
+
+    \item Prove that the condition number of a nonsingular matrix is greater than or equal to 1. Your
+    proof should work for any matrix operator norm, not just the 2-norm.\\
+
+    $K(\textbf{A})=\left\|\textbf{A}\right\|\left\|\textbf{A}^{-1}\right\| \ge \left\|\textbf{AA}^{-1}\right\|=\left\|\textbf{I}\right\|=1 \Rightarrow K(\textbf{A}) \ge 1$\\
+
+    \item Let $\textbf{A}\in \mathbb{R}^{nxn}$, $q(\textbf{x})=\textbf{x}^{T}\textbf{A}\textbf{x}$\\
+    \\
+    (a) Prove $q(\textbf{x})=0$ when \textbf{A} is skew-symmetric $\textbf{A}^{T}=-\textbf{A}$.\\
+    $\textbf{x}^{T} \in \mathbb{R}^{1xn}$, $\textbf{x} \in \mathbb{R}^{nx1}$ so $\textbf{x}^{T}\textbf{A}\textbf{x} \in \mathbb{R}^{1x1}$ and $\textbf{x}^{T}\textbf{A}\textbf{x}=(\textbf{x}^{T}\textbf{A}\textbf{x})^{T}$.\\
+    $q(\textbf{x})=\textbf{x}^{T}\textbf{A}\textbf{x}=(\textbf{x}^{T}\textbf{A}\textbf{x})^{T}=\textbf{x}^{T}\textbf{A}^{T}\textbf{x}=\textbf{x}^{T}(-\textbf{A})\textbf{x}=-\textbf{x}^{T}\textbf{A}\textbf{x} \Rightarrow \textbf{x}^{T}\textbf{A}\textbf{x}=-\textbf{x}^{T}\textbf{A}\textbf{x} \Rightarrow 2\textbf{x}^T\textbf{A}\textbf{x}=0 \Rightarrow \textbf{x}^{T}\textbf{A}\textbf{x}=0$\\
+    \\
+    (b)  For a general square matrix, define $\textbf{A}_{1} = \frac{(\textbf{A}+\textbf{A}^{T})}{2}$ and $\textbf{A}_{2} = \frac{(\textbf{A}-\textbf{A}^{T})}{2}$ and note that $\textbf{A} = \textbf{A}_{1}+\textbf{A}_{2}$. Show that $\textbf{A}_{1}$ is symmetric and $q(\textbf{x}) = \textbf{x}^{T}\textbf{A}_{1}\textbf{x}$ for all $\textbf{x}$. \\
+    \\
+    $q(\textbf{x})=\textbf{x}^{T}\textbf{A}_{1}\textbf{x}=\textbf{x}^{T}(\frac{\textbf{A}+\textbf{A}^{T}}{2})\textbf{x}=\frac{1}{2}\textbf{x}^{T}(\textbf{A}+\textbf{A}^{T})\textbf{x}=\frac{1}{2}\textbf{x}^{T}(\textbf{Ax}+\textbf{A}^{T}\textbf{x})=\frac{1}{2}(\textbf{x}^{T}\textbf{Ax}+\textbf{x}^{T}\textbf{A}^{T}\textbf{x})=\frac{1}{2}(\textbf{x}^{T}\textbf{A}^{T}\textbf{x}+\textbf{x}^{T}\textbf{A}\textbf{x})=\frac{1}{2}\textbf{x}^{T}(\textbf{A}^{T}+\textbf{A})\textbf{x}=\textbf{x}^{T}(\frac{\textbf{A}^{T}+\textbf{A}}{2})\textbf{x}=\textbf{x}^{T}(\frac{\textbf{A}+\textbf{A}^{T}}{2})^{T}\textbf{x}=\textbf{x}^{T}\textbf{A}_{1}^{T}\textbf{x}$
+    $\Rightarrow q(\textbf{x})=\textbf{x}^{T}\textbf{A}_{1}\textbf{x}=\textbf{x}^{T}\textbf{A}_{1}^{T}\textbf{x}\Rightarrow\textbf{A}_{1}=\textbf{A}_{1}^{T}$\\  
+
+    \item Suppose that the $n$×$n$ matrix $\textbf{A}$ is full (a.k.a. dense, i.e. all nonzero entries), and that you’ve
+    computed the LU factorization at $O(n^{3})$ cost. How much would it cost (i.e. operation count) to use the
+    Sherman-Morrison identity; $(\textbf{A}+\textbf{u}\textbf{v}^{T})^{-1}=\textbf{A}^{-1}-\frac{\textbf{A}^{-1}\textbf{u}\textbf{v}^{T}\textbf{A}^{-1}}{1+\textbf{v}^{T}\textbf{A}^{T}\textbf{u}}$\\
+    $(\textbf{A}+\textbf{u}\textbf{v}^{T})\textbf{x}=\textbf{b} \Rightarrow \textbf{x}=(\textbf{A}+\textbf{u}\textbf{v}^{T})^{-1}\textbf{b} \Rightarrow \textbf{x}=(\textbf{A}^{-1}-\frac{\textbf{A}^{-1}\textbf{u}\textbf{v}^{T}\textbf{A}^{-1}}{1+\textbf{v}^{T}\textbf{A}^{T}\textbf{u}})\textbf{b}\Rightarrow  \textbf{x}=(\textbf{A}^{-1}\textbf{b}-(\frac{\textbf{A}^{-1}\textbf{u}\textbf{v}^{T}\textbf{A}^{-1}}{1+\textbf{v}^{T}\textbf{A}^{T}\textbf{u}})\textbf{b})$.\\
+    Assuming $\textbf{u} \in \mathbb{R}^{nx1}$, $\textbf{v}^{T} \in \mathbb{R}^{1xn}$, $\textbf{A}^{-1} \in \mathbb{R}^{nxn}$, \\
+    $x=\textbf{A}^{-1}\textbf{b}-\textbf{A}^{-1}\textbf{u} \cdot (\frac{\textbf{v}^{T}\textbf{A}^{-1}\textbf{b}}{1+\textbf{v}^{T}\textbf{A}^{-1}\textbf{u}}); \frac{\textbf{v}^{T}\textbf{A}^{-1}\textbf{b}}{1+\textbf{v}^{T}\textbf{A}^{-1}\textbf{u}}=k \Rightarrow \textbf{x}=\textbf{A}^{-1}\textbf{b}-k\textbf{A}^{-1}\textbf{u} \Rightarrow \textbf{A}\textbf{x}=\textbf{b}-k\textbf{u}$. $\textbf{A}=\textbf{LU}$ has already been computed at $O(n^{3})$. $\textbf{LU}\textbf{x}=\textbf{b}-k\textbf{u} \Rightarrow \textbf{L}\textbf{c}=\textbf{b}-k\textbf{u}$, $\textbf{U}\textbf{x}=\textbf{c}$.\\
+    Solving for \textbf{x} would take $2n^{2}$ operations or $O(n^{2})$. The operation count for Gaussian elimination of the whole system would be about $\frac{2}{3}n^{3}+{n^2}$ operations or $O(n^{3})$. Overall, they have the same cost, $O(n^{3})$, but if the comparison is between solving for \textbf{x} with $\textbf{A}=\textbf{LU}$ already computed, and solving for \textbf{x} using Gaussian Elimination, using the \textbf{LU} decomposition is faster at $O(n^2)$. \\
+
+    \item Let \textbf{A}, \textbf{B}, \textbf{C} be matrices of size $m$×$n$, $n$×$p$, and $p$×$q$, respectively. Do
+    an operations count for computing \textbf{A}(\textbf{BC}) and (\textbf{AB})\textbf{C}. Give examples of when one order of computation
+    is preferable over the other.\\
+    \\
+    Generally, if $\textbf{A} \in \mathbb{R}^{mxn}$, $\textbf{B} \in \mathbb{R}^{nxp}$, $\textbf{C} \in \mathbb{R}^{pxq}$, the operation count for, $\textbf{A}(\textbf{BC})$ is $O(mnq)+O(npq)$ and for, $(\textbf{AB})\textbf{C}$ is $O(mpq)+O(mnp)$, depending on the dimensions of the matrices, and assuming $\textbf{A,B,C} \notin \mathbb{R}^{1x1}$, the magnitude can range from $O(n^{3})$ to $O(n)$. One example to illustrate that one order of matrix multiplication has a lower operation count, could be if $m=p=q > n$ and $\neq 1$. In this case, the operation count for $(\textbf{AB})\textbf{C}$ would be $O(m^{3}) + O(nm^{2})$, with the leading order $O(m^{3})$. In this same case, the operations count for $\textbf{A}(\textbf{BC})$ would be $O(nm^{2})+O(np^{2})$ with leading orders $O(m^{2})$ or $O(p^{2})$.\\
+
+    \item Let \textbf{A} be an $n$x$n$ matrix with 4 on the diagonal, -1 immediately above and below the
+    diagonal, and -1 in the $(1,n)$ and $(n,1)$ entries.\\
+    (a)What is the operation count to reduce this matrix to upper triangular form using Gaussian Elimination?\\
+    Each column from 1 to $n-2$ has 2 eliminations, and there is one elimination for the $n-1$ column. Each of those eliminations have about $2n$ operations. So an estimate of the operation count would be about $2(2n)(n-2)+2n=4n^{2}-8n+2n=4n^{2}-6n$ with a leading order of $O(n^{2})$.\\
+    (b) Let $\textbf{A} = \textbf{LU}$ be the \textbf{LU} factorization of \textbf{A}. Where are the nonzero entries in the \textbf{U}?\\
+    Because there are only non-zero entries in the diagonal, immediately above and below the diagonal and in the $(n,1)$ and $(1,n)$ of \textbf{A}, \textbf{A} is symmetric, with real entries. $\textbf{A}=\textbf{L}\textbf{D}\textbf{L}^{T}$, so $\textbf{U}=\textbf{D}\textbf{L}^{T}$. There will only be non-zero entries immediately above the diagonal and the last column of $\textbf{D}\textbf{L}^{T}$ and, in turn, $\textbf{U}$. verified with scipy.linalg.ldl(A).\\
+    
+    \item Consider the linear system
+    \begin{center}
+    $6x+2y+2z=-2$\\
+    $2x+\frac{2}{3}y+\frac{1}{3}z=1$\\
+    $x+2y-z=0$\\
+    \end{center}
+    which has exact solution $x=2.6$, $y=-3.8$, $z=-5$.
+    \[
+    \begin{bmatrix}
+    6& 2 & 2 & \bigm| & -2\\
+    2& \frac{2}{3} & \frac{1}{3} & \bigm| & 1 \\
+    1& 2 & -1 & \bigm| & 0
+    \end{bmatrix} 
+    \]\\
+    (a) Solve the system using Gaussian elimination without pivoting, rounding each arithmetic operation to 4 digits (round to nearest, rounding up from 0.00005)\\
+    $R_2^{*}=R_{2}-\frac{1}{3}R_{1}$\\
+    $R_3^{*}=R_3-\frac{1}{6}R_1$
+    \[
+    \begin{bmatrix}
+    6& 2 & 2 & \bigm| & -2\\
+    0& 0 & -0.334 & \bigm| & 1.667 \\
+    0& 1.667 & -1.333 & \bigm| & 0.333
+    \end{bmatrix} 
+    \]\\
+    $-0.334z=1.667 \Rightarrow z=\frac{1.667}{-0.334} \Rightarrow z=-4.991$\\
+    $1.667y+(-1.333)(-4.991)=0.333 \Rightarrow 1.667y+6.653=0.333 \Rightarrow 1.667y=-6.32 \Rightarrow y = -3.791$\\
+    $6x+2(-3.791)+2(-4.991)=-2 \Rightarrow 6x-7.582-9.982=-2 \Rightarrow 6x-17.56=-2 \Rightarrow 6x=15.56 \Rightarrow x=\frac{15.56}{6} \Rightarrow x=2.593$\\
+    $x=2.593,y=-3.791,z=-4.991$\\
+    (I wasn't sure if I should solve right here or not.)\\
+    (b) Repeat part (a) using partial pivoting\\
+    $R_{2}^{*}=R_{3}$
+    \[
+    \begin{bmatrix}
+    6& 2 & 2 & \bigm| & -2\\
+    0& 1.667 & -1.333 & \bigm| & 0.333\\
+    0& 0 & -0.334 & \bigm| & 1.667
+    \end{bmatrix} 
+    \]\\
+    $R_3^{*}=\frac{1}{-0.334}R_{3}$\\
+    \[
+    \begin{bmatrix}
+    6& 2 & 2 & \bigm| & -2\\
+    0& 1.667 & -1.333 & \bigm| & 0.333\\
+    0& 0 & 1 & \bigm| & -4.991
+    \end{bmatrix} 
+    \]\\
+    $R_2^{*}=R_{2}+1.333R_{3}$\\
+    $R_2^{*}=\frac{1}{1.667}R_{2}$
+    \[
+    \begin{bmatrix}
+    6& 2 & 2 & \bigm| & -2\\
+    0& 1 & 0 & \bigm| & -3.791\\
+    0& 0 & 1 & \bigm| & -4.991
+    \end{bmatrix} 
+    \]\\
+    $R_1^{*}=R_{1}-2R_{3}$\\
+    $R_{1}^{*}=R_{1}-2R_{2}$\\
+    $R_{1}^{*}=\frac{1}{6}R_{1}$\\
+    \[
+    \begin{bmatrix}
+    1& 0 & 0 & \bigm| & 2.593\\
+    0& 1 & 0 & \bigm| & -3.791\\
+    0& 0 & 1 & \bigm| & -4.991
+    \end{bmatrix} 
+    \]\\
+    $x=2.593,y=-3.791,z=-4.991$
+    
+    
+    
+
+    
+\end{enumerate}
+\end{document}
